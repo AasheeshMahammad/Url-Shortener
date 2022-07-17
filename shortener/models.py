@@ -3,6 +3,9 @@ from .utils import create_shortcode
 from django.conf import settings
 from .validators import validate_url, validate_dot_com
 from django_hosts.resolvers import reverse
+from django.conf import settings
+
+HOST = getattr(settings,'HOST_NAME')
 
 # Create your models here.
 
@@ -49,5 +52,5 @@ class Shortt(models.Model):
         return str(self.url)
 
     def get_short_url(self):
-        url_path = reverse('shortcode', kwargs={'shortcode':self.shortcode}, host='www', scheme='http')
+        url_path = f"{HOST}/{self.shortcode}"
         return url_path

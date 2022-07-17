@@ -58,8 +58,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'shortt.urls'
 ROOT_HOSTCONF = 'shortt.hosts'
 DEFAULT_HOST = 'www'
-DEFAULT_REDIRECT_URL = 'https://www.shortt.com:5000'
-PARENT_HOST = 'shortt.com:5000'
+DEFAULT_REDIRECT_URL = 'https://www.shortt.com'
+PARENT_HOST = 'shortt.com'
 
 TEMPLATES = [
     {

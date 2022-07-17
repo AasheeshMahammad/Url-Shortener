@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-*!%#g^8@mm(6lql8%mrz*ey#w3_u&ysz7$k@d%zlhor)kuy(ha
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["diminutive.herokuapp.com"]
+HOST = "diminutive.herokuapp.com"
+
+ALLOWED_HOSTS = [HOST]
 
 
 # Application definition
@@ -60,6 +62,7 @@ ROOT_HOSTCONF = 'shortt.hosts'
 DEFAULT_HOST = 'www'
 DEFAULT_REDIRECT_URL = 'http://www.shortt.co'
 PARENT_HOST = 'shortt.co'
+HOST_NAME = 'https://'+HOST
 
 TEMPLATES = [
     {

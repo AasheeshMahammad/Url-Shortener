@@ -13,12 +13,12 @@ class HomeView(View):
     def get(self, request, *args, **kwargs):
         form = SubmitUrlForm()
         template = loader.get_template('home.html')
-        context = {'form':form, 'heading':'Shortt.co'}
+        context = {'form':form,}
         return HttpResponse(template.render(context,request))
     
     def post(self, request, *args, **kwargs):
         form = SubmitUrlForm(request.POST)
-        context = {'form':form, 'heading':'Shortt.co'}
+        context = {'form':form}
         page = 'home.html'
         if form.is_valid():
             url = form.cleaned_data.get('url')
