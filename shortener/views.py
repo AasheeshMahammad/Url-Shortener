@@ -5,6 +5,7 @@ from .models import Shortt
 from django.template import loader
 from .forms import SubmitUrlForm
 from analytics.models import ClickEvent
+import json
 
 # Create your views here.
 
@@ -25,6 +26,9 @@ class HomeView(View):
             if 'http' not in url:
                 url = 'http://'+url
             obj, created = Shortt.objects.get_or_create(url=url)
+            if form.cleaned_data.get('simple'):
+                data = {'short_url':obj.get_short_url()}
+                return HttpResponse(json.dumps(data))
             context = {'object':obj,'created':created}
             if created:
                 page = 'created.html'

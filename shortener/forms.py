@@ -15,3 +15,4 @@ class SubmitUrlForm(forms.Form):
             }
         )
         )
+    simple = forms.BooleanField(initial=False,required=False,widget=forms.HiddenInput())

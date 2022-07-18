@@ -5,7 +5,9 @@
     <h2 class="lead">Shorten URL</h2>
     <form method="POST" action=".">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form.visible_fields %}
+            <p>{{ field }}</p>
+        {% endfor %}
         <input class="btn btn-primary" type="submit" value="Shorten &raquo;">
     </form>
 </main>
