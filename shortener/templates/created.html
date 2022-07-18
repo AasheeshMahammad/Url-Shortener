@@ -7,7 +7,7 @@
 {% block content %}
 <div>
     <h1>Created!</h1>
-    <p>URL : {{ object.url }}</p>
+    <p class="lead">URL : {{ object.url }}</p>
     <p class="lead">Shortened : <a class="btn btn-link" href="{{object.get_short_url}}" target="_blank">{{ object.get_short_url }}</a></p>
     <a class="btn btn-primary" href="/">+ New</a>
 </div>

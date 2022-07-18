@@ -7,9 +7,9 @@
 {% block content %}
 <div style="text-align:center; margin: 0 auto; width: auto;">
         <h1>Existing</h1>
-        <p>URL : {{ object.url }}</p>
+        <p class="lead">URL : {{ object.url }}</p>
         {% if object.clickevent %}
-            <p>Count: {{ object.clickevent.count }}</p>
+            <p class="lead">Count: {{ object.clickevent.count }}</p>
         {% endif %}
         <p class="lead">Shortened : <a class="btn btn-link" href="{{object.get_short_url}}" target="_blank">{{ object.get_short_url }}</a></p>
         <a class="btn btn-primary" href="/">+ New</a>
