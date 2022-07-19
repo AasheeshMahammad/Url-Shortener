@@ -42,7 +42,7 @@ class Shortt(models.Model):
         if self.shortcode is None or self.shortcode == "":
             self.shortcode = create_shortcode(self)
         if 'http' not in self.url:
-            self.url = 'http://' + self.url
+            self.url = 'https://' + self.url
         super(Shortt, self).save(*args, **kwargs)
  
     def __str__(self):

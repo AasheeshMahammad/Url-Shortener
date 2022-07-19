@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from django.views import View
 from .models import Shortt
 from django.template import loader
@@ -23,8 +23,8 @@ class HomeView(View):
         page = 'home.html'
         if form.is_valid():
             url = form.cleaned_data.get('url')
-            if 'http' not in url:
-                url = 'http://'+url
+            if 'https' not in url:
+                url = 'https://'+url
             obj, created = Shortt.objects.get_or_create(url=url)
             if form.cleaned_data.get('simple'):
                 data = {'short_url':obj.get_short_url()}
@@ -34,6 +34,8 @@ class HomeView(View):
                 page = 'created.html'
             else:
                 page = 'existing.html'
+        if form.cleaned_data.get('simple'):
+            return HttpResponseBadRequest("Invalid URL")
         template = loader.get_template(page)
         return HttpResponse(template.render(context,request))
 
