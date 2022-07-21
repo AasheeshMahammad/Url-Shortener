@@ -30,7 +30,7 @@ class ShorttMananger(models.Manager):
         return f"Count : {count}"
 
 class Shortt(models.Model):
-    url = models.CharField(max_length=255, validators=[validate_url, validate_dot_com])
+    url = models.CharField(max_length=255, validators=[validate_url])
     shortcode = models.CharField(max_length=SHORTCODE_MAX, unique=True, blank=True)
     update = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)

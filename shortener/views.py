@@ -23,7 +23,7 @@ class HomeView(View):
         page = 'home.html'
         if form.is_valid():
             url = form.cleaned_data.get('url')
-            if 'https' not in url:
+            if 'http' not in url:
                 url = 'https://'+url
             obj, created = Shortt.objects.get_or_create(url=url)
             if form.cleaned_data.get('simple'):
