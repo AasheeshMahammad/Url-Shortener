@@ -26,7 +26,7 @@ class HomeView(View):
             if 'http' not in url:
                 url = 'https://'+url
             obj, created = Shortt.objects.get_or_create(url=url)
-            if form.cleaned_data.get('simple'):
+            if request.POST.get('simple'):
                 data = {'short_url':obj.get_short_url()}
                 return HttpResponse(json.dumps(data))
             context = {'object':obj,'created':created}
@@ -34,7 +34,7 @@ class HomeView(View):
                 page = 'created.html'
             else:
                 page = 'existing.html'
-        if form.cleaned_data.get('simple'):
+        if request.POST.get('simple'):
             return HttpResponseBadRequest("Invalid URL")
         template = loader.get_template(page)
         return HttpResponse(template.render(context,request))
